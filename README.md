@@ -3,7 +3,7 @@ My first discord bot done in python
 
 This is just a joke we made along with my friends while playing the economy of the bot "UnbeliavleBoat" or whatever it is called
 
-We had a rule: they had to be stored on jsons! So i learned a little of how to code discord bots and how to do stuff on jsons with python
+We had a rule: they had to be stored on jsons! So i learned a little of how to code discord bots and how to do stuff with jsons with python
 
 # Usage
 
