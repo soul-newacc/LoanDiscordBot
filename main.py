@@ -3,7 +3,7 @@ import json
 import discord
 from discord.ext import commands
 from discord import app_commands
-from config import token # this was easier for me than a .env or a lil lines of code for a .json
+from config import token # this was easier for me than doin a env or a json
 
 bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 
@@ -35,11 +35,11 @@ async def verprestamos(interaction: discord.Interaction):
     os.chdir("..")
 
 @bot.tree.command(name="infoprestamo", description="ver info de un prestamo en especifico")
-@app_commands.describe(prestamoo="Especificar prestamo con nombre del archivo completo, ej: Moserati.json")
-async def infoprestamo(interaction: discord.Interaction, prestamoo: str):
+@app_commands.describe(prestamo="Especificar prestamo con nombre del archivo completo, ej: Moserati.json")
+async def infoprestamo(interaction: discord.Interaction, prestamo: str):
     os.chdir("loans")
-    prestamo = json.load(open(prestamoo))
-    embed = discord.Embed(title=f"{prestamoo}", description=f"{json.dumps(prestamo, indent=4)}", color=14536588)
+    prestamoo = json.load(open(prestamo))
+    embed = discord.Embed(title=f"{prestamo}", description=f"{json.dumps(prestamoo, indent=4)}", color=14536588)
     await interaction.response.send_message(embed=embed)
     os.chdir("..")
 
@@ -55,5 +55,15 @@ async def borrarprestamo(interaction: discord.Interaction, prestamo: str):
         embed = discord.Embed(title="Error", description="El prestamo no existe!", color=16711680)
         await interaction.response.send_message(embed=embed)
         os.chdir("..")
+
+@bot.tree.command(name="help", description="Lista de comandos disponibles")
+async def help(interaction: discord.Interaction):
+    embed = discord.Embed(title="Comandos prestamistas", color=14536588)
+    embed.set_thumbnail(url="https://imgur.com/4qH4eWV")
+    embed.add_field(name="crearprestamos", value="crea prestamos pues!!")
+    embed.add_field(name="verprestamos", value="ver prestamos pues!")
+    embed.add_field(name="infoprestamo", value="ver informacion de un prestamo en especifico")
+    embed.add_field(name="borrarprestamo", value="borrar un prestamo pues!")
+    await interaction.response.send_message(embed=embed)
 
 bot.run(token)
