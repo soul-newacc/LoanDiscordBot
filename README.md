@@ -1,4 +1,4 @@
-#LoanDiscordBot
+# LoanDiscordBot
 My first discord bot done in python
 
 This is just a joke we made along with my friends while playing the economy of the bot "UnbeliavleBoat" or whatever it is called
@@ -18,5 +18,3 @@ Its mainly in Spanish so I will translate and explain the commands the most simp
 /verprestamos: see loans stored. Usage: /verprestamos
 
 /infoprestamo: See information about a loan. Usage: /infoprestamo prestamo[NameOfTheFile]
-
-Yes 
