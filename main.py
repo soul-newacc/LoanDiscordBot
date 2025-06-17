@@ -3,7 +3,7 @@ import json
 import discord
 from discord.ext import commands
 from discord import app_commands
-from config import token # this was easier for me than doin a env or a json
+from config import token #this was easier for me than doin a env or a json
 
 bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 
