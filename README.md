@@ -5,7 +5,7 @@ This is just a joke we made along with my friends while playing the economy of t
 
 We had a rule: they had to be stored on jsons! So i learned a little of how to code discord bots and how to do stuff with jsons with python
 
-Im starting to think on creating a full bot with diversity of commands and stuff, for practice i will keep updating this with i learn on the way
+Im starting to think on creating a full bot with diversity of commands and stuff, for practice i will keep updating this with knowledge i learn on the way
 
 # Usage
 
