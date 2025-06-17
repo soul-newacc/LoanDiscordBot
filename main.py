@@ -1,21 +1,22 @@
 import os
 import json
 import discord
-from discord.ext import commands
 from discord import app_commands
 from config import token #this was easier for me than doin a env or a json
 
-bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
+intents = discord.Intents.all()
+client = discord.Client(intents=intents)
+bot = app_commands.CommandTree(client)
 
-@bot.event
+@client.event
 async def on_ready():
     try:
-        synced = await bot.tree.sync()
+        synced = await bot.sync()
         print(synced)
     except Exception as e:
         print(e)
 
-@bot.tree.command(name="crearprestamo", description="crea prestamos pues!!")
+@bot.command(name="crearprestamo", description="crea prestamos pues!!")
 async def ping(interaction: discord.Interaction, nombre: str, id: str, monto: str):
     data = {"Nombre": nombre, "ID": id, "Monto": monto}
     nom = nombre+".json"
@@ -26,7 +27,7 @@ async def ping(interaction: discord.Interaction, nombre: str, id: str, monto: st
     await interaction.response.send_message(embed=embed)
     os.chdir("..")
 
-@bot.tree.command(name="verprestamos", description="ver prestamos pues!!")
+@bot.command(name="verprestamos", description="ver prestamos pues!!")
 async def verprestamos(interaction: discord.Interaction):
     os.chdir("loans")
     prestamos = os.listdir()
@@ -34,7 +35,7 @@ async def verprestamos(interaction: discord.Interaction):
     await interaction.response.send_message(embed=embed)
     os.chdir("..")
 
-@bot.tree.command(name="infoprestamo", description="ver info de un prestamo en especifico")
+@bot.command(name="infoprestamo", description="ver info de un prestamo en especifico")
 @app_commands.describe(prestamo="Especificar prestamo con nombre del archivo completo, ej: Moserati.json")
 async def infoprestamo(interaction: discord.Interaction, prestamo: str):
     os.chdir("loans")
@@ -43,7 +44,7 @@ async def infoprestamo(interaction: discord.Interaction, prestamo: str):
     await interaction.response.send_message(embed=embed)
     os.chdir("..")
 
-@bot.tree.command(name="borrarprestamo", description="borrar un prestamo pues!")
+@bot.command(name="borrarprestamo", description="borrar un prestamo pues!")
 async def borrarprestamo(interaction: discord.Interaction, prestamo: str):
     try:
         os.chdir("loans")
@@ -56,14 +57,13 @@ async def borrarprestamo(interaction: discord.Interaction, prestamo: str):
         await interaction.response.send_message(embed=embed)
         os.chdir("..")
 
-@bot.tree.command(name="help", description="Lista de comandos disponibles")
+@bot.command(name="help", description="Lista de comandos disponibles")
 async def help(interaction: discord.Interaction):
     embed = discord.Embed(title="Comandos prestamistas", color=14536588)
     embed.set_thumbnail(url="https://imgur.com/4qH4eWV")
     embed.add_field(name="crearprestamos", value="crea prestamos pues!!")
-    embed.add_field(name="verprestamos", value="ver prestamos pues!")
-    embed.add_field(name="infoprestamo", value="ver informacion de un prestamo en especifico")
+    embed.add_field(name="verprestamos", value="ver prestamos pues!")                                                                                                                embed.add_field(name="infoprestamo", value="ver informacion de un prestamo en especifico")
     embed.add_field(name="borrarprestamo", value="borrar un prestamo pues!")
     await interaction.response.send_message(embed=embed)
 
-bot.run(token)
+client.run(token)
