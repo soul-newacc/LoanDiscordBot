@@ -11,11 +11,11 @@ Im starting to think on creating a full bot with diversity of commands and stuff
 
 Its mainly in Spanish so I will translate and explain the commands the most simple I can
 
-/crearprestamos: creates a json file to store info of a loan. Usage: /createloans name [nameOfTheClient] id[IdOfTheClient] amount[AmountOfMoneyLent]
+/crearprestamo: creates a json file to store info of a loan. Usage: /crearprestamo nombre[nameOfTheClient] id[IdOfTheClient] monto[AmountOfMoneyLent]
 
-/deleteloan: removes loan files. Usage: /deleteloanloan[NameOfTheFile]
+/borrarprestamo: removes loan files. Usage: /borrarprestamo prestamo[NameOfTheFile]
 
-/verprestamos: see loans stored. Usage: /seeloans
+/verprestamos: see loans stored. Usage: /verprestamos
 
 /infoprestamo: See information about a loan. Usage: /infoprestamo prestamo[NameOfTheFile]
 
