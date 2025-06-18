@@ -64,12 +64,12 @@ async def borrarprestamo(interaction: discord.Interaction, prestamo: str):
 
 @bot.command(name="help", description="Lista de comandos disponibles")
 async def help(interaction: discord.Interaction):
-    embed = discord.Embed(title="Comandos prestamistas", description="Las funciones principales del bot es el almacenamiento de prestamos, como la creacion, revision y eliminacion de los mismos. Los comandos son:", color=14536588)
-    embed.set_thumbnail(url="https://imgur.com/4qH4eWV")
-    embed.add_field(name="crearprestamos", value="crea prestamos pues!!")
-    embed.add_field(name="verprestamos", value="ver prestamos pues!")                                                                                                                
-    embed.add_field(name="infoprestamo", value="ver informacion de un prestamo en especifico")
-    embed.add_field(name="borrarprestamo", value="borrar un prestamo pues!")
+    embed = discord.Embed(title=f"Comandos prestamistas", description="Las funciones principales del bot es el almacenamiento de prestamos, como la creacion, revision y eliminacion de los mismos. \n \n Los comandos para dichas funciones son:", color=14536588)
+    embed.set_thumbnail(url="https://cdn.discordapp.com/avatars/1383663187601395793/b0f77d11e38a4049420a2b2356705cae.png?size=512")
+    embed.add_field(name="crearprestamos", value="> Almacena informacion de un prestamo (Nombre del cliente, ID del cliente y monto solicitado) en archivos json", inline=False)
+    embed.add_field(name="verprestamos", value="> Lista los prestamos almacenados", inline=False)                                                                                                                
+    embed.add_field(name="infoprestamo", value="> Ver informacion de un prestamo almacenado", inline=False)
+    embed.add_field(name="borrarprestamo", value="> Borrar un prestamo del almacenamiento", inline=False)
     await interaction.response.send_message(embed=embed)
 
 client.run(token)
