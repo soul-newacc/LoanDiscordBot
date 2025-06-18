@@ -18,3 +18,5 @@ Its mainly in Spanish so I will translate and explain the commands the most simp
 /verprestamos: see loans stored. Usage: /verprestamos
 
 /infoprestamo: See information about a loan. Usage: /infoprestamo prestamo[NameOfTheFile]
+
+/help: it explains itself 
