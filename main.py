@@ -38,11 +38,16 @@ async def verprestamos(interaction: discord.Interaction):
 @bot.command(name="infoprestamo", description="ver info de un prestamo en especifico")
 @app_commands.describe(prestamo="Especificar prestamo con nombre del archivo completo, ej: Moserati.json")
 async def infoprestamo(interaction: discord.Interaction, prestamo: str):
-    os.chdir("loans")
-    prestamoo = json.load(open(prestamo))
-    embed = discord.Embed(title=f"{prestamo}", description=f"{json.dumps(prestamoo, indent=4)}", color=14536588)
-    await interaction.response.send_message(embed=embed)
-    os.chdir("..")
+    try:
+        os.chdir("loans")
+        prestamoo = json.load(open(prestamo))
+        embed = discord.Embed(title=f"{prestamo}", description=f"{json.dumps(prestamoo, indent=4)}", color=14536588)
+        await interaction.response.send_message(embed=embed)
+        os.chdir("..")
+    except FileNotFoundError:
+        embed = discord.Embed(title="Error", description="El prestamo no existe!", color=16711680)
+        await interaction.respomse.send_message(embed=embed)
+        os.chdir("..")
 
 @bot.command(name="borrarprestamo", description="borrar un prestamo pues!")
 async def borrarprestamo(interaction: discord.Interaction, prestamo: str):
