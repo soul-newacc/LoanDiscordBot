@@ -64,7 +64,7 @@ async def borrarprestamo(interaction: discord.Interaction, prestamo: str):
 
 @bot.command(name="help", description="Lista de comandos disponibles")
 async def help(interaction: discord.Interaction):
-    embed = discord.Embed(title="Comandos prestamistas", color=14536588)
+    embed = discord.Embed(title="Comandos prestamistas", description="Las funciones principales del bot es el almacenamiento de prestamos, como la creacion, revision y eliminacion de los mismos. Los comandos son:", color=14536588)
     embed.set_thumbnail(url="https://imgur.com/4qH4eWV")
     embed.add_field(name="crearprestamos", value="crea prestamos pues!!")
     embed.add_field(name="verprestamos", value="ver prestamos pues!")                                                                                                                
