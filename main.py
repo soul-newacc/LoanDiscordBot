@@ -46,7 +46,7 @@ async def infoprestamo(interaction: discord.Interaction, prestamo: str):
         os.chdir("..")
     except FileNotFoundError:
         embed = discord.Embed(title="Error", description="El prestamo no existe!", color=16711680)
-        await interaction.respomse.send_message(embed=embed)
+        await interaction.response.send_message(embed=embed)
         os.chdir("..")
 
 @bot.command(name="borrarprestamo", description="borrar un prestamo pues!")
@@ -67,7 +67,8 @@ async def help(interaction: discord.Interaction):
     embed = discord.Embed(title="Comandos prestamistas", color=14536588)
     embed.set_thumbnail(url="https://imgur.com/4qH4eWV")
     embed.add_field(name="crearprestamos", value="crea prestamos pues!!")
-    embed.add_field(name="verprestamos", value="ver prestamos pues!")                                                                                                                embed.add_field(name="infoprestamo", value="ver informacion de un prestamo en especifico")
+    embed.add_field(name="verprestamos", value="ver prestamos pues!")                                                                                                                
+    embed.add_field(name="infoprestamo", value="ver informacion de un prestamo en especifico")
     embed.add_field(name="borrarprestamo", value="borrar un prestamo pues!")
     await interaction.response.send_message(embed=embed)
 
